@@ -16,10 +16,8 @@ public class StarDiamond {
             nst += 2;
             System.out.println();
         }
-
         nsp = 1;
         nst -= n;
-
         for (int i = 1; i <= n-1; i++) {
             for (int j = 1; j <= nsp; j++) {
                 System.out.print(" " + " ");
@@ -31,6 +29,5 @@ public class StarDiamond {
             nsp++;
             nst -= 2;
         }
-
     }
 }
