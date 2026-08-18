@@ -2,19 +2,36 @@ package pattern.practice;
 
 public class Practice03 {
     public static void main(String[] args) {
-        numberPalindromicTrianglePattern(4);
+        numberPalindromicTrianglePattern(6);
     }
 
     /*
     27. numberPalindromicTrianglePattern()
-1 2 3 4  17 18 19 20
-  5 6 7  14 15 16
-    8 9  12 13
-       10 11
+        1 2 3 4  17 18 19 20
+          5 6 7  14 15 16
+            8 9  12 13
+              10 11
      */
 
     static void numberPalindromicTrianglePattern(int n) {
-
+        int a = 1;
+        int b = (n+1) * n;
+        for (int i = 1; i <= n; i++) {
+            int count = 0;
+            for (int j = 2; j <= i; j++) {
+                System.out.print(" " + " ");
+            }
+            for (int j = 1; j <= n+1-i; j++) {
+                System.out.print(a++ + " ");
+            }
+            System.out.print("   " + "    ");
+            for (int j = n-i; j >= 0; j--) {
+                System.out.print(b-j + " ");
+                count++;
+            }
+            b -= count;
+            System.out.println();
+        }
     }
 
     static void reverseAlphabetPyramidPattern(int n) {
