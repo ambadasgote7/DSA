@@ -6,9 +6,31 @@ import java.util.List;
 
 public class Problems {
     public static void main(String[] args) {
-        int[] arr = {0,1,2,3,4}; int[] index = {0,1,2,2,1};
-        System.out.println(Arrays.toString(createTargetArray(arr,index)));
+
+        int[][] mat = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        int n = mat.length;
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == j)
+                    sum += mat[i][j];
+
+                if (i + j == n-1 && i != j)
+                    sum += mat[i][j];
+            }
+        }
+
+        System.out.println(sum);
+
     }
+
+
 
     public boolean checkIfPangram(String s) {
 
