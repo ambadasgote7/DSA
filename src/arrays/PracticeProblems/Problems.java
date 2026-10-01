@@ -2,37 +2,95 @@ package arrays.PracticeProblems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Problems {
+    static void printArr(int[][] arr) {
+        for (int[] a : arr) {
+            for (int ele : a) {
+                System.out.print(ele + " ");
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
 
-        int[][] mat = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-        };
+//        int[][] mat = {
+//                {0, 0, 0},
+//                {0, 1, 0},
+//                {1, 1, 1}
+//        };
+//
+//        int[][] target = {
+//                {1, 1, 1},
+//                {0, 1, 0},
+//                {0, 0, 0}
+//        };
+        int[] arr = {9};
 
-        int n = mat.length;
-        int sum = 0;
+        arr = new int[3];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == j)
-                    sum += mat[i][j];
 
-                if (i + j == n-1 && i != j)
-                    sum += mat[i][j];
+            int num = arr[0];
+            List<Integer> list = new ArrayList<>();
+            for (int i = 1; i < arr.length; i++) {
+                num = num * 10 + arr[i];
             }
-        }
+            num =+ 1;
+            while (num > 0) {
+                list.add(num%10);
+                num /= 10;
+            }
+            Collections.reverse(list);
+            int[] array = new int[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                array[i] = list.get(i);
+            }
 
-        System.out.println(sum);
+
+//
+//        int n = mat.length;
+//        int sum = 0;
+//
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if (i == j)
+//                    sum += mat[i][j];
+//
+//                if (i + j == n-1 && i != j)
+//                    sum += mat[i][j];
+//            }
+//        }
+//
+//        System.out.println(sum);
 
     }
 
+    public static boolean findRotation(int[][] mat, int[][] target) {
+        int n = mat.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = temp;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n/2; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[i][n-j-1];
+                mat[i][n-j-1] = temp;
+            }
+        }
+        printArr(mat);
+        System.out.println("---------===========------------");
+        printArr(target);
+        return Arrays.deepEquals(mat,target);
+    }
 
 
-    public boolean checkIfPangram(String s) {
+    public static boolean checkIfPangram(String s) {
 
         if (s.length() < 26) {
             return false;
