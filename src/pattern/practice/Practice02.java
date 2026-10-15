@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Practice02 {
     public static void main(String[] args) {
-        binaryTrianglePattern(5);
+        hollowHourglassPattern(5);
     }
 
     static void binaryTrianglePattern(int n) {
