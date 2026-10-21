@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Intersection {
     public static void main(String[] args) {
-        int[] arr = {1,2,3,3,4,5,5,6};
+        int[] arr = {1,2,5,3,4,5,5,6};
         int[] brr = {2,3,3,5,6,7,8};
         List<Integer> ans = intersectionOfSortedArrays(arr, brr);
         System.out.println(ans);
     }
     public static List<Integer> intersectionOfSortedArrays(int[] arr, int[] brr) {
-        List<Integer> ans = new ArrayList<>();
+        //List<Integer> ans = new ArrayList<>();
 //        int[] visited = new int[brr.length];
 //        for (int i = 0; i < arr.length; i++) {
 //            for (int j = 0; j < brr.length; j++) {
@@ -21,15 +21,22 @@ public class Intersection {
 //                }
 //            }
 //        }
+        List<Integer> list = new ArrayList<>();
         int m = arr.length, n = brr.length;
         int i = 0, j = 0;
-        while (i < m && j < n) {
-            if (arr[i] == brr[j]) {
-                ans.add(arr[i]);
+        while (i<m && j<n) {
+            if (arr[i] < brr[j]) {
+                i++;
+            } else if (arr[i] > brr[j]) {
                 j++;
+            } else {
+                list.add(arr[i]);
+                // IF you want to avoid duplicates then comment above and use
+//                if (list.isEmpty() || list.get(list.size()-1) != arr[i]) list.add(arr[i]);
+                i++;j++;
             }
-            i++;
+            if (i >= m || j >= n) break;
         }
-        return ans;
+        return list;
     }
 }
