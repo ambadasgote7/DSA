@@ -1,4 +1,4 @@
-package binary_search.Easy_LogicBuilding;
+package binary_search.LogicBuilding;
 
 public class SearchInsert {
     public static void main(String[] args) {
